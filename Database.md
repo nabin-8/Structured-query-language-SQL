@@ -1,8 +1,8 @@
 1. What is DATABASE?
 
 - Database is a collection of
-data stored in a format that
-can easily be accessed.
+  data stored in a format that
+  can easily be accessed.
 
 1. OPERATIONS
 
@@ -12,107 +12,135 @@ can easily be accessed.
 - DELETE
 
 1. SQL
+
 - (Structured Query Language)
-SQL is a standard language
-for database creation and
-manipulation.
+  SQL is a standard language
+  for database creation and
+  manipulation.
 
 1. (Database Management System)
 
 - DBMSis a software or tool that we use to manage our data.
 
 ##### Type of DBMS
+
 - Sql
 - NoSQl (Relational)
 
 ##### RDBMS
+
 - Relational Database Management System
 
 ##### Data TYPES
-- A database data type refers to the format of data storage that can hold a distinct type 
+
+- A database data type refers to the format of data storage that can hold a distinct type
 
 ##### MySQL Data TYPES
-|![datatypes](/src/datatypes.png)|
-|---|
+
+| ![datatypes](/src/datatypes.png) |
+| -------------------------------- |
 
 ##### Mysql Workbench installation
+
 ##### XAAMP
 
 #### Login Through shell
+
 ```
 mysql -h localhost -u root
 ```
 
 #### Create and Drop Database
+
 - sql is not case sensitive langauge
+
 ```
 CREATE DATABASE mydb;
 ```
+
 - Use to create database
+
 ```
 DROP DATABASE mydb;
 ```
+
 - Use to remove/Delete database
 
 ---
+
 #### Tables (Create , Alter, Drop)
+
 - Tables are collection of rows and columns
 - To use database
+
 ```
 use mydb;
 ```
+
 - Create table in database
+
 ```
 CREATE TABLE students(
    name varchar(225),
    father_name varchar(225),
    city varchar(50),
-   date_of_birth date 
+   date_of_birth date
 );
 ```
 
 - Rename table
+
 ```
  RENAME TABLE students TO class_students;
 ```
 
 - Delete table
+
 ```
 DROP TABLE students;
 ```
 
 - Alter Table it is used
+
 1. To add new column
 1. modify existing column
 1. delete any colume
 
 - add new column
+
 ```
 ALTER TABLE students add class_name varchar(255);
 ```
 
 - delete column
+
 ```
 ALTER TABLE students DROP COLUMN  class_name;
 ```
 
-- MODIFY  column
+- MODIFY column
+
 ```
 ALTER TABLE students MODIFY COLUMN city varchar(255);
 ```
+
 - change position of column
+
 ```
 ALTER TABLE students MODIFY COLUMN date_of_birth date AFTER father_name;
 ```
 
 - adding colume after any column
+
 ```
 ALTER TABLE students ADD COLUMN mother_name varchar(255)
 AFTER father_name;
 ```
 
 #### Insert Query
+
 - create new table after drop previous student table
+
 ```
  CREATE TABLE students(
      student_id int,
@@ -122,7 +150,9 @@ AFTER father_name;
      date_of_birth date
      );
 ```
+
 - Inserting data
+
 ```
 INSERT INTO students (student_id, student_name, father_name, marks, date_of_birth) VALUES (1,"Nabin", "Shankar", 78.36, "1997-09-10");
 
@@ -130,6 +160,7 @@ INSERT INTO students (student_id, student_name, father_name, marks, date_of_birt
 ```
 
 - Nth-Number of Query / Multiple Query
+
 ```
  INSERT INTO students (student_id, student_name, father_name) VALUES(3, "Joy","smith"),
      (4, "John", "Don")
@@ -137,9 +168,11 @@ INSERT INTO students (student_id, student_name, father_name, marks, date_of_birt
 ```
 
 #### SELECT QUERY
+
 - select query is help to fetch data from database and show to user.
 
 - Show all tables
+
 ```
  SELECT * FROM students;
 
@@ -154,6 +187,7 @@ INSERT INTO students (student_id, student_name, father_name, marks, date_of_birt
 ```
 
 - Another Way with specific student_name and father_name.
+
 ```
 SELECT student_name, father_name FROM students;
 
@@ -168,7 +202,9 @@ SELECT student_name, father_name FROM students;
 ```
 
 #### WHERE CLAUSE
+
 - if i need student data which id have 4 lets see whats the query
+
 ```
 SELECT * FROM students WHERE student_id=4;
 
@@ -178,6 +214,7 @@ SELECT * FROM students WHERE student_id=4;
 |          4 | John         | Don         |  NULL | NULL          |
 +------------+--------------+-------------+-------+---------------+
 ```
+
 - number of students marks having Greater than 50
 
 ```
@@ -192,7 +229,8 @@ SELECT * FROM students WHERE marks >=50;
 ```
 
 - Find Date of Birth
-``` 
+
+```
  SELECT * FROM STUDENTS WHERE date_of_birth = "1997-09-10";
 
 +------------+--------------+-------------+-------+---------------+
@@ -203,6 +241,7 @@ SELECT * FROM students WHERE marks >=50;
 ```
 
 - Students marks greater than 70
+
 ```
 SELECT student_name FROM students WHERE marks >70;
 
@@ -217,6 +256,7 @@ SELECT student_name FROM students WHERE marks >70;
 #### AND, OR, NOT, OPERATORS
 
 - Data
+
 ```
 select * from students_info;
 
@@ -269,6 +309,7 @@ select * from students_info where city_name="KTM" and marks >70;
 - **OR Operator**
 
 - Students from KTM OR Dang
+
 ```
 select * from students_info where city_name="KTM" or city_name="Dang";
 +------------+--------------+-------------+-------+---------------+-----------+
@@ -278,6 +319,7 @@ select * from students_info where city_name="KTM" or city_name="Dang";
 |          7 | Sairaj       | Timilsina   | 88.96 | 1986-05-11    | Dang      |
 +------------+--------------+-------------+-------+---------------+-----------+
 ```
+
 - Students from KTM OR Dang but marks should greater than 80
 
 ```
@@ -300,7 +342,6 @@ MariaDB [mydb]> select * from students_info where (city_name="KTM" or city_name=
 
 - **NOT Operator**
 
-
 ```
 select * from students_info where not city_name="Delhi";
 
@@ -318,6 +359,7 @@ select * from students_info where not city_name="Delhi";
 #### Update Query
 
 - Update the columns
+
 ```
  update students_info set student_name="Suraj", father_name="Surandra" w
 here student_id=5;
@@ -356,9 +398,10 @@ select * from students_info;
 +------------+---------------+--------------+-------+---------------+-----------+
 ```
 
- #### DELETE QUERY
+#### DELETE QUERY
 
 - To Delete all tables
+
 ```
 DELETE FROM students_info;
 ```
@@ -397,9 +440,11 @@ select * from students_info;
 ```
 
 ### Constants
+
 #### Primary Key
 
 - create a one table having primary key
+
 ```
 create table results(
     -> result_id int primary key,
@@ -420,12 +465,14 @@ select * from results;
 ```
 
 - we cannot store null in primary key
+
 ```
 insert into results (result_id, marks) value(null,66);
 ERROR 1048 (23000): Column 'result_id' cannot be null
 ```
 
 - Primary key cannot be dublicate
+
 ```
 insert into results (result_id, marks) value(2,66);
 
@@ -463,7 +510,6 @@ ERROR 1062 (23000): Duplicate entry '3' for key 'PRIMARY'
 #### Auto Increment
 
 - for auto increment create table
-
 
 ```
 create table payments(
@@ -516,6 +562,7 @@ select * from payments;
 ```
 
 - insert the data
+
 ```
 insert into employees(first_name, last_name, salary) value(NULL, "Kumar", NULL);
 ERROR 1048 (23000): Column 'first_name' cannot be null
@@ -536,3 +583,65 @@ Query OK, 1 row affected (0.031 sec)
 
 #### DEFAULT
 
+```
+ create table users(
+    -> user_id int primary key auto_increment,
+    -> full_name varchar(50) NOT NULL,
+    -> status enum('active', 'inactive', 'blocked') default 'inactive'
+    -> );
+
+```
+
+##### Output:
+
+```
+ select * from users;
++---------+-----------+----------+
+| user_id | full_name | status   |
++---------+-----------+----------+
+|       1 | rakesh    | inactive |
++---------+-----------+----------+
+
+```
+
+```
+ insert into users(full_name, status) value("rohan", "active");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from users;
++---------+-----------+----------+
+| user_id | full_name | status   |
++---------+-----------+----------+
+|       1 | rakesh    | inactive |
+|       2 | rohan     | active   |
++---------+-----------+----------+
+```
+
+#### Foreign Key
+
+- Foreign key are used to link two tables
+
+| ![](./src/image.png) |
+| -------------------- |
+
+#### Joins (inner, left, right)
+
+#### Aliases
+
+#### IN and BETWEEN OPERATOR
+
+#### Functions
+
+#### Wild card
+
+#### Order by
+
+#### Group by
+
+#### Limit
+
+#### SUB-QUERIES
+
+#### Union
+
+#### Truncate table
