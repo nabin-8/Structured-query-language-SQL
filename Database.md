@@ -50,18 +50,36 @@
 mysql -h localhost -u root
 ```
 
+#### How to see existing databases and tables in mySQL
+
+- To see databases
+
+```
+SHOW DATABASES;
+```
+
+- To see tables
+
+```
+SHOW TABLES;
+```
+
 #### Create and Drop Database
 
 - sql is not case sensitive langauge
 
 ```
+
 CREATE DATABASE mydb;
+
 ```
 
 - Use to create database
 
 ```
+
 DROP DATABASE mydb;
+
 ```
 
 - Use to remove/Delete database
@@ -74,30 +92,38 @@ DROP DATABASE mydb;
 - To use database
 
 ```
+
 use mydb;
+
 ```
 
 - Create table in database
 
 ```
+
 CREATE TABLE students(
-   name varchar(225),
-   father_name varchar(225),
-   city varchar(50),
-   date_of_birth date
+name varchar(225),
+father_name varchar(225),
+city varchar(50),
+date_of_birth date
 );
+
 ```
 
 - Rename table
 
 ```
- RENAME TABLE students TO class_students;
+
+RENAME TABLE students TO class_students;
+
 ```
 
 - Delete table
 
 ```
+
 DROP TABLE students;
+
 ```
 
 - Alter Table it is used
@@ -109,32 +135,42 @@ DROP TABLE students;
 - add new column
 
 ```
+
 ALTER TABLE students add class_name varchar(255);
+
 ```
 
 - delete column
 
 ```
-ALTER TABLE students DROP COLUMN  class_name;
+
+ALTER TABLE students DROP COLUMN class_name;
+
 ```
 
 - MODIFY column
 
 ```
+
 ALTER TABLE students MODIFY COLUMN city varchar(255);
+
 ```
 
 - change position of column
 
 ```
+
 ALTER TABLE students MODIFY COLUMN date_of_birth date AFTER father_name;
+
 ```
 
 - adding colume after any column
 
 ```
+
 ALTER TABLE students ADD COLUMN mother_name varchar(255)
 AFTER father_name;
+
 ```
 
 #### Insert Query
@@ -142,29 +178,35 @@ AFTER father_name;
 - create new table after drop previous student table
 
 ```
- CREATE TABLE students(
-     student_id int,
-     student_name varchar(255),
-     father_name varchar(255),
-     marks float(10,2),
-     date_of_birth date
-     );
+
+CREATE TABLE students(
+student_id int,
+student_name varchar(255),
+father_name varchar(255),
+marks float(10,2),
+date_of_birth date
+);
+
 ```
 
 - Inserting data
 
 ```
+
 INSERT INTO students (student_id, student_name, father_name, marks, date_of_birth) VALUES (1,"Nabin", "Shankar", 78.36, "1997-09-10");
 
 INSERT INTO students (student_id, student_name, father_name, marks, date_of_birth) VALUES (2, "Hemant", "hemnath", 89.33, "1988-09-10");
+
 ```
 
 - Nth-Number of Query / Multiple Query
 
 ```
- INSERT INTO students (student_id, student_name, father_name) VALUES(3, "Joy","smith"),
-     (4, "John", "Don")
-     ;
+
+INSERT INTO students (student_id, student_name, father_name) VALUES(3, "Joy","smith"),
+(4, "John", "Don")
+;
+
 ```
 
 #### SELECT QUERY
@@ -174,31 +216,35 @@ INSERT INTO students (student_id, student_name, father_name, marks, date_of_birt
 - Show all tables
 
 ```
- SELECT * FROM students;
+
+SELECT \* FROM students;
 
 +------------+--------------+-------------+-------+---------------+
 | student_id | student_name | father_name | marks | date_of_birth |
 +------------+--------------+-------------+-------+---------------+
-|          1 | Nabin        | Shankar     | 78.36 | 1997-09-10    |
-|          2 | Hemant       | hemnath     | 89.33 | 1988-09-10    |
-|          3 | Joy          | smith       |  NULL | NULL          |
-|          4 | John         | Don         |  NULL | NULL          |
+| 1 | Nabin | Shankar | 78.36 | 1997-09-10 |
+| 2 | Hemant | hemnath | 89.33 | 1988-09-10 |
+| 3 | Joy | smith | NULL | NULL |
+| 4 | John | Don | NULL | NULL |
 +------------+--------------+-------------+-------+---------------+
+
 ```
 
 - Another Way with specific student_name and father_name.
 
 ```
+
 SELECT student_name, father_name FROM students;
 
 +--------------+-------------+
 | student_name | father_name |
 +--------------+-------------+
-| Nabin        | Shankar     |
-| Hemant       | hemnath     |
-| Joy          | smith       |
-| John         | Don         |
+| Nabin | Shankar |
+| Hemant | hemnath |
+| Joy | smith |
+| John | Don |
 +--------------+-------------+
+
 ```
 
 #### WHERE CLAUSE
@@ -206,51 +252,59 @@ SELECT student_name, father_name FROM students;
 - if i need student data which id have 4 lets see whats the query
 
 ```
-SELECT * FROM students WHERE student_id=4;
+
+SELECT \* FROM students WHERE student_id=4;
 
 +------------+--------------+-------------+-------+---------------+
 | student_id | student_name | father_name | marks | date_of_birth |
 +------------+--------------+-------------+-------+---------------+
-|          4 | John         | Don         |  NULL | NULL          |
+| 4 | John | Don | NULL | NULL |
 +------------+--------------+-------------+-------+---------------+
+
 ```
 
 - number of students marks having Greater than 50
 
 ```
-SELECT * FROM students WHERE marks >=50;
+
+SELECT \* FROM students WHERE marks >=50;
 
 +------------+--------------+-------------+-------+---------------+
 | student_id | student_name | father_name | marks | date_of_birth |
 +------------+--------------+-------------+-------+---------------+
-|          1 | Nabin        | Shankar     | 78.36 | 1997-09-10    |
-|          2 | Hemant       | hemnath     | 89.33 | 1988-09-10    |
+| 1 | Nabin | Shankar | 78.36 | 1997-09-10 |
+| 2 | Hemant | hemnath | 89.33 | 1988-09-10 |
 +------------+--------------+-------------+-------+---------------+
+
 ```
 
 - Find Date of Birth
 
 ```
- SELECT * FROM STUDENTS WHERE date_of_birth = "1997-09-10";
+
+SELECT \* FROM STUDENTS WHERE date_of_birth = "1997-09-10";
 
 +------------+--------------+-------------+-------+---------------+
 | student_id | student_name | father_name | marks | date_of_birth |
 +------------+--------------+-------------+-------+---------------+
-|          1 | Nabin        | Shankar     | 78.36 | 1997-09-10    |
+| 1 | Nabin | Shankar | 78.36 | 1997-09-10 |
 +------------+--------------+-------------+-------+---------------+
+
 ```
 
 - Students marks greater than 70
 
 ```
+
 SELECT student_name FROM students WHERE marks >70;
 
 +--------------+
 | student_name |
 +--------------+
-| Nabin        |
-| Hemant       |
+| Nabin |
+| Hemant |
 +--------------+
+
 ```
 
 #### AND, OR, NOT, OPERATORS
@@ -258,19 +312,21 @@ SELECT student_name FROM students WHERE marks >70;
 - Data
 
 ```
-select * from students_info;
+
+select \* from students_info;
 
 +------------+---------------+--------------+-------+---------------+-----------+
-| student_id | student_name  | father_name  | marks | date_of_birth | city_name |
+| student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+---------------+--------------+-------+---------------+-----------+
-|          1 | Nabin         | Gopal        | 78.99 | 1997-09-10    | KTM       |
-|          2 | Rakesh        | Manoj        | 59.00 | 1998-10-10    | Bikaner   |
-|          3 | John          | Smith        | 52.00 | 1998-06-11    | Delhi     |
-|          4 | Joy           | Don          | 68.20 | 1998-01-10    | Delhi     |
-|          5 | Rohan Singh   | Ritesh Singh | 49.00 | 1999-10-12    | Mumbai    |
-|          6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01    | Mumbai    |
-|          7 | Sairaj        | Timilsina    | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 2 | Rakesh | Manoj | 59.00 | 1998-10-10 | Bikaner |
+| 3 | John | Smith | 52.00 | 1998-06-11 | Delhi |
+| 4 | Joy | Don | 68.20 | 1998-01-10 | Delhi |
+| 5 | Rohan Singh | Ritesh Singh | 49.00 | 1999-10-12 | Mumbai |
+| 6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01 | Mumbai |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+---------------+--------------+-------+---------------+-----------+
+
 ```
 
 - **AND Operator**
@@ -278,32 +334,36 @@ select * from students_info;
 - Students Only From Delhi
 
 ```
-select * from students_info where city_name="Delhi";
+
+select \* from students_info where city_name="Delhi";
 +------------+--------------+-------------+-------+---------------+-----------+
 | student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+--------------+-------------+-------+---------------+-----------+
-|          3 | John         | Smith       | 52.00 | 1998-06-11    | Delhi     |
-|          4 | Joy          | Don         | 68.20 | 1998-01-10    | Delhi     |
+| 3 | John | Smith | 52.00 | 1998-06-11 | Delhi |
+| 4 | Joy | Don | 68.20 | 1998-01-10 | Delhi |
 +------------+--------------+-------------+-------+---------------+-----------+
+
 ```
 
 ```
-select * from students_info where city_name ="Delhi" and marks >60;
+
+select \* from students_info where city_name ="Delhi" and marks >60;
 
 +------------+--------------+-------------+-------+---------------+-----------+
 | student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+--------------+-------------+-------+---------------+-----------+
-|          4 | Joy          | Don         | 68.20 | 1998-01-10    | Delhi     |
+| 4 | Joy | Don | 68.20 | 1998-01-10 | Delhi |
 +------------+--------------+-------------+-------+---------------+-----------+
 
 like wise
-select * from students_info where city_name="KTM" and marks >70;
+select \* from students_info where city_name="KTM" and marks >70;
 
 +------------+--------------+-------------+-------+---------------+-----------+
 | student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+--------------+-------------+-------+---------------+-----------+
-|          1 | Nabin        | Gopal       | 78.99 | 1997-09-10    | KTM       |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
 +------------+--------------+-------------+-------+---------------+-----------+
+
 ```
 
 - **OR Operator**
@@ -311,49 +371,55 @@ select * from students_info where city_name="KTM" and marks >70;
 - Students from KTM OR Dang
 
 ```
-select * from students_info where city_name="KTM" or city_name="Dang";
+
+select \* from students_info where city_name="KTM" or city_name="Dang";
 +------------+--------------+-------------+-------+---------------+-----------+
 | student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+--------------+-------------+-------+---------------+-----------+
-|          1 | Nabin        | Gopal       | 78.99 | 1997-09-10    | KTM       |
-|          7 | Sairaj       | Timilsina   | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+--------------+-------------+-------+---------------+-----------+
+
 ```
 
 - Students from KTM OR Dang but marks should greater than 80
 
 ```
-select * from students_info where (city_name="KTM" or city_name="Dang") and marks > 80 ;
+
+select \* from students_info where (city_name="KTM" or city_name="Dang") and marks > 80 ;
 +------------+--------------+-------------+-------+---------------+-----------+
 | student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+--------------+-------------+-------+---------------+-----------+
-|          7 | Sairaj       | Timilsina   | 88.96 | 1986-05-11    | Dang      |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+--------------+-------------+-------+---------------+-----------+
 1 row in set (0.000 sec)
 
-MariaDB [mydb]> select * from students_info where (city_name="KTM" or city_name="Dang") and marks > 70 ;
+MariaDB [mydb]> select \* from students_info where (city_name="KTM" or city_name="Dang") and marks > 70 ;
 +------------+--------------+-------------+-------+---------------+-----------+
 | student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+--------------+-------------+-------+---------------+-----------+
-|          1 | Nabin        | Gopal       | 78.99 | 1997-09-10    | KTM       |
-|          7 | Sairaj       | Timilsina   | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+--------------+-------------+-------+---------------+-----------+
+
 ```
 
 - **NOT Operator**
 
 ```
-select * from students_info where not city_name="Delhi";
+
+select \* from students_info where not city_name="Delhi";
 
 +------------+---------------+--------------+-------+---------------+-----------+
-| student_id | student_name  | father_name  | marks | date_of_birth | city_name |
+| student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+---------------+--------------+-------+---------------+-----------+
-|          1 | Nabin         | Gopal        | 78.99 | 1997-09-10    | KTM       |
-|          2 | Rakesh        | Manoj        | 59.00 | 1998-10-10    | Bikaner   |
-|          5 | Rohan Singh   | Ritesh Singh | 49.00 | 1999-10-12    | Mumbai    |
-|          6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01    | Mumbai    |
-|          7 | Sairaj        | Timilsina    | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 2 | Rakesh | Manoj | 59.00 | 1998-10-10 | Bikaner |
+| 5 | Rohan Singh | Ritesh Singh | 49.00 | 1999-10-12 | Mumbai |
+| 6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01 | Mumbai |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+---------------+--------------+-------+---------------+-----------+
+
 ```
 
 #### Update Query
@@ -361,41 +427,45 @@ select * from students_info where not city_name="Delhi";
 - Update the columns
 
 ```
- update students_info set student_name="Suraj", father_name="Surandra" w
+
+update students_info set student_name="Suraj", father_name="Surandra" w
 here student_id=5;
 
 Output:
-select * from students_info;
+select \* from students_info;
 +------------+---------------+--------------+-------+---------------+-----------+
-| student_id | student_name  | father_name  | marks | date_of_birth | city_name |
+| student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+---------------+--------------+-------+---------------+-----------+
-|          1 | Nabin         | Gopal        | 78.99 | 1997-09-10    | KTM       |
-|          2 | Rakesh        | Manoj        | 59.00 | 1998-10-10    | Bikaner   |
-|          3 | John          | Smith        | 52.00 | 1998-06-11    | Delhi     |
-|          4 | Joy           | Don          | 68.20 | 1998-01-10    | Delhi     |
-|          5 | Suraj         | Surandra     | 49.00 | 1999-10-12    | Mumbai    |
-|          6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01    | Mumbai    |
-|          7 | Sairaj        | Timilsina    | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 2 | Rakesh | Manoj | 59.00 | 1998-10-10 | Bikaner |
+| 3 | John | Smith | 52.00 | 1998-06-11 | Delhi |
+| 4 | Joy | Don | 68.20 | 1998-01-10 | Delhi |
+| 5 | Suraj | Surandra | 49.00 | 1999-10-12 | Mumbai |
+| 6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01 | Mumbai |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+---------------+--------------+-------+---------------+-----------+
+
 ```
 
 - Update the marks where id=3 and city_name="Delhi"
 
 ```
+
 update students_info set marks=70 where student_id=3 and city_name="Delhi";
 
-select * from students_info;
+select \* from students_info;
 +------------+---------------+--------------+-------+---------------+-----------+
-| student_id | student_name  | father_name  | marks | date_of_birth | city_name |
+| student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+---------------+--------------+-------+---------------+-----------+
-|          1 | Nabin         | Gopal        | 78.99 | 1997-09-10    | KTM       |
-|          2 | Rakesh        | Manoj        | 59.00 | 1998-10-10    | Bikaner   |
-|          3 | John          | Smith        | 70.00 | 1998-06-11    | Delhi     |
-|          4 | Joy           | Don          | 68.20 | 1998-01-10    | Delhi     |
-|          5 | Suraj         | Surandra     | 49.00 | 1999-10-12    | Mumbai    |
-|          6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01    | Mumbai    |
-|          7 | Sairaj        | Timilsina    | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 2 | Rakesh | Manoj | 59.00 | 1998-10-10 | Bikaner |
+| 3 | John | Smith | 70.00 | 1998-06-11 | Delhi |
+| 4 | Joy | Don | 68.20 | 1998-01-10 | Delhi |
+| 5 | Suraj | Surandra | 49.00 | 1999-10-12 | Mumbai |
+| 6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01 | Mumbai |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+---------------+--------------+-------+---------------+-----------+
+
 ```
 
 #### DELETE QUERY
@@ -403,40 +473,46 @@ select * from students_info;
 - To Delete all tables
 
 ```
+
 DELETE FROM students_info;
+
 ```
 
 - delete students info whose id is 5
 
 ```
+
 delete from students_info where student_id=5;
 
- select * from students_info;
+select \* from students_info;
 +------------+---------------+--------------+-------+---------------+-----------+
-| student_id | student_name  | father_name  | marks | date_of_birth | city_name |
+| student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+---------------+--------------+-------+---------------+-----------+
-|          1 | Nabin         | Gopal        | 78.99 | 1997-09-10    | KTM       |
-|          2 | Rakesh        | Manoj        | 59.00 | 1998-10-10    | Bikaner   |
-|          3 | John          | Smith        | 70.00 | 1998-06-11    | Delhi     |
-|          4 | Joy           | Don          | 68.20 | 1998-01-10    | Delhi     |
-|          6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01    | Mumbai    |
-|          7 | Sairaj        | Timilsina    | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 2 | Rakesh | Manoj | 59.00 | 1998-10-10 | Bikaner |
+| 3 | John | Smith | 70.00 | 1998-06-11 | Delhi |
+| 4 | Joy | Don | 68.20 | 1998-01-10 | Delhi |
+| 6 | Yogesh Pareek | Kamal Pareek | 90.00 | 2000-07-01 | Mumbai |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+---------------+--------------+-------+---------------+-----------+
+
 ```
 
 - Delete students record whose are from delhi or mumbai
 
 ```
+
 delete from students_info where city_name="Delhi" or city_name="Mumbai";
 
-select * from students_info;
+select \* from students_info;
 +------------+--------------+-------------+-------+---------------+-----------+
 | student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+--------------+-------------+-------+---------------+-----------+
-|          1 | Nabin        | Gopal       | 78.99 | 1997-09-10    | KTM       |
-|          2 | Rakesh       | Manoj       | 59.00 | 1998-10-10    | Bikaner   |
-|          7 | Sairaj       | Timilsina   | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 2 | Rakesh | Manoj | 59.00 | 1998-10-10 | Bikaner |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+--------------+-------------+-------+---------------+-----------+
+
 ```
 
 ### Constants
@@ -446,20 +522,21 @@ select * from students_info;
 - create a one table having primary key
 
 ```
+
 create table results(
-    -> result_id int primary key,
-    -> marks float (5,2)
-    -> );
+-> result_id int primary key,
+-> marks float (5,2)
+-> );
 
 insert into it
- insert into results (result_id, marks) value(1,66);
+insert into results (result_id, marks) value(1,66);
 
 output:
-select * from results;
+select \* from results;
 +-----------+-------+
 | result_id | marks |
 +-----------+-------+
-|         1 | 66.00 |
+| 1 | 66.00 |
 +-----------+-------+
 
 ```
@@ -467,43 +544,47 @@ select * from results;
 - we cannot store null in primary key
 
 ```
+
 insert into results (result_id, marks) value(null,66);
 ERROR 1048 (23000): Column 'result_id' cannot be null
+
 ```
 
 - Primary key cannot be dublicate
 
 ```
+
 insert into results (result_id, marks) value(2,66);
 
 insert into results (result_id, marks) value(2,66);
 ERROR 1062 (23000): Duplicate entry '2' for key 'PRIMARY'
+
 ```
 
 - How to create existing colume make a primary key
 
 ```
+
 alter table students_info add constraint primary key(student_id);
 
 lets insert value
- insert into students_info (student_id, student_name, father_name, marks, date_of_birth, city_name) value(3, "rahul", "subash", 88, "1994-11-20", "Sadobato");
+insert into students_info (student_id, student_name, father_name, marks, date_of_birth, city_name) value(3, "rahul", "subash", 88, "1994-11-20", "Sadobato");
 
 Output:
-select * from students_info;
+select \* from students_info;
 +------------+--------------+-------------+-------+---------------+-----------+
 | student_id | student_name | father_name | marks | date_of_birth | city_name |
 +------------+--------------+-------------+-------+---------------+-----------+
-|          1 | Nabin        | Gopal       | 78.99 | 1997-09-10    | KTM       |
-|          2 | Rakesh       | Manoj       | 59.00 | 1998-10-10    | Bikaner   |
-|          3 | rahul        | subash      | 88.00 | 1994-11-20    | Sadobato  |
-|          7 | Sairaj       | Timilsina   | 88.96 | 1986-05-11    | Dang      |
+| 1 | Nabin | Gopal | 78.99 | 1997-09-10 | KTM |
+| 2 | Rakesh | Manoj | 59.00 | 1998-10-10 | Bikaner |
+| 3 | rahul | subash | 88.00 | 1994-11-20 | Sadobato |
+| 7 | Sairaj | Timilsina | 88.96 | 1986-05-11 | Dang |
 +------------+--------------+-------------+-------+---------------+-----------+
 
 lets insert once again to student_id having 3
 
- insert into students_info (student_id, student_name, father_name, marks, date_of_birth, city_name) value(3, "rahul", "subash", 88, "1994-11-20", "Sadobato");
+insert into students_info (student_id, student_name, father_name, marks, date_of_birth, city_name) value(3, "rahul", "subash", 88, "1994-11-20", "Sadobato");
 ERROR 1062 (23000): Duplicate entry '3' for key 'PRIMARY'
-
 
 ```
 
@@ -512,22 +593,22 @@ ERROR 1062 (23000): Duplicate entry '3' for key 'PRIMARY'
 - for auto increment create table
 
 ```
+
 create table payments(
-    -> payment_id int primary key auto_increment,
-    -> amount decimal (10,2)
-    -> );
+-> payment_id int primary key auto_increment,
+-> amount decimal (10,2)
+-> );
 
 insert amount only
 insert into payments (amount) value(22);
 
 Output:
-select * from payments;
+select \* from payments;
 +------------+--------+
 | payment_id | amount |
 +------------+--------+
-|          1 |  22.00 |
+| 1 | 22.00 |
 +------------+--------+
-
 
 lets insert multiple amount to see auto increment
 insert into payments (amount) value(20);
@@ -536,15 +617,15 @@ insert into payments (amount) value(1000);
 insert into payments (amount) value(105.66);
 
 output:
-select * from payments;
+select \* from payments;
 +------------+---------+
-| payment_id | amount  |
+| payment_id | amount |
 +------------+---------+
-|          1 |   22.00 |
-|          2 |   20.00 |
-|          3 |   16.00 |
-|          4 | 1000.00 |
-|          5 |  105.66 |
+| 1 | 22.00 |
+| 2 | 20.00 |
+| 3 | 16.00 |
+| 4 | 1000.00 |
+| 5 | 105.66 |
 +------------+---------+
 
 ```
@@ -552,18 +633,20 @@ select * from payments;
 #### NULL and NOT NULL
 
 ```
- create table employees(
-    -> emp_id int primary key auto_increment,
-    -> first_name varchar(255) NOT NULL,
-    -> last_name varchar(255) NULL,
-    -> salary float (10,2) NOT NULL
-    -> );
+
+create table employees(
+-> emp_id int primary key auto_increment,
+-> first_name varchar(255) NOT NULL,
+-> last_name varchar(255) NULL,
+-> salary float (10,2) NOT NULL
+-> );
 
 ```
 
 - insert the data
 
 ```
+
 insert into employees(first_name, last_name, salary) value(NULL, "Kumar", NULL);
 ERROR 1048 (23000): Column 'first_name' cannot be null
 
@@ -571,11 +654,9 @@ ok improve first name
 insert into employees(first_name, last_name, salary) value("Suraj", "Kumar", NULL);
 ERROR 1048 (23000): Column 'salary' cannot be null
 
-
 ok improve salary
- insert into employees(first_name, last_name, salary) value("Suraj", "Kumar", 10000);
+insert into employees(first_name, last_name, salary) value("Suraj", "Kumar", 10000);
 Query OK, 1 row affected (0.031 sec)
-
 
 ```
 
@@ -584,37 +665,41 @@ Query OK, 1 row affected (0.031 sec)
 #### DEFAULT
 
 ```
- create table users(
-    -> user_id int primary key auto_increment,
-    -> full_name varchar(50) NOT NULL,
-    -> status enum('active', 'inactive', 'blocked') default 'inactive'
-    -> );
+
+create table users(
+-> user_id int primary key auto_increment,
+-> full_name varchar(50) NOT NULL,
+-> status enum('active', 'inactive', 'blocked') default 'inactive'
+-> );
 
 ```
 
 ##### Output:
 
 ```
- select * from users;
+
+select \* from users;
 +---------+-----------+----------+
-| user_id | full_name | status   |
+| user_id | full_name | status |
 +---------+-----------+----------+
-|       1 | rakesh    | inactive |
+| 1 | rakesh | inactive |
 +---------+-----------+----------+
 
 ```
 
 ```
- insert into users(full_name, status) value("rohan", "active");
+
+insert into users(full_name, status) value("rohan", "active");
 Query OK, 1 row affected (0.01 sec)
 
-mysql> select * from users;
+mysql> select \* from users;
 +---------+-----------+----------+
-| user_id | full_name | status   |
+| user_id | full_name | status |
 +---------+-----------+----------+
-|       1 | rakesh    | inactive |
-|       2 | rohan     | active   |
+| 1 | rakesh | inactive |
+| 2 | rohan | active |
 +---------+-----------+----------+
+
 ```
 
 #### Foreign Key
@@ -623,6 +708,87 @@ mysql> select * from users;
 
 | ![](./src/image.png) |
 | -------------------- |
+
+- create order table first
+
+```
+ create table orders(
+    -> order_id int primary key auto_increment,
+    -> order_number int NOT NULL,
+    -> total_amount float(10,2),
+    -> user_id int,
+    -> constraint fk_user_id foreign key (user_id) references users(user_id)
+    -> );
+
+```
+
+- fk_user_id is foreign key
+- Then it will visible like this.
+
+```
+show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| class_students |
+| orders         |
+| students       |
+| users          |
++----------------+
+
+```
+
+- lets insert some value
+
+```
+ insert into orders(order_number, totsl_amount, user_id)values(3434, 500, 2);
+
+```
+
+<!-- after giving foreign key it is interlink with users table -->
+
+- to see the users data
+
+```
+ SELECT * FROM users WHERE user_id = 2 ;
++---------+-----------+--------+
+| user_id | full_name | status |
++---------+-----------+--------+
+|       2 | rohan     | active |
++---------+-----------+--------+
+```
+
+- To remove foreign key
+
+```
+alter table orders drop foreign key fk_user_id;
+```
+
+- How to make foreign key in existing table
+- First we will create payments table
+
+```
+create table payments(
+    -> payment_id int auto_increment primary key,
+    -> amount int(22));
+
+```
+
+Add column to existing table
+
+```
+alter table students
+add COLUMN fk_std_id int;
+```
+
+- now lets create foreign key
+
+```
+ALTER TABLE payments
+ADD COLUMN std_id int,
+ADD CONSTRAINT fk_std_id FOREIGN KEY (std_id) REFERENCES students (student_id);
+
+```
 
 #### Joins (inner, left, right)
 
@@ -645,3 +811,11 @@ mysql> select * from users;
 #### Union
 
 #### Truncate table
+
+```
+
+```
+
+```
+
+```
